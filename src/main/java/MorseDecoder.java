@@ -6,6 +6,9 @@ import java.security.InvalidParameterException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.*;
+import java.util.regex.*;
+import java.util.ArrayList;
 
 /**
  * Decode Morse code from a WAV file.
@@ -53,6 +56,7 @@ public class MorseDecoder {
 
         double[] sampleBuffer = new double[BIN_SIZE * inputFile.getNumChannels()];
         for (int binIndex = 0; binIndex < totalBinCount; binIndex++) {
+            inputFile.readFrames(returnBuffer, totalBinCount);
             // Get the right number of samples from the inputFile
             // Sum all the samples together and store them in the returnBuffer
         }
@@ -81,6 +85,13 @@ public class MorseDecoder {
          * There are four conditions to handle. Symbols should only be output when you see
          * transitions. You will also have to store how much power or silence you have seen.
          */
+        ArrayList count = new ArrayList<Integer>();
+        count.add(powerMeasurements);
+        for (double d : powerMeasurements) {
+
+
+        }
+
 
         // if ispower and waspower
         // else if ispower and not waspower
